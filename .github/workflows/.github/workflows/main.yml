@@ -1,0 +1,22 @@
+name: Kiyomaro Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0,4,11 * * *'
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v3
+
+      - name: Pythonセットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: 実行
+        run: python bot.py
